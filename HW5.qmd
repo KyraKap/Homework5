@@ -1,0 +1,173 @@
+---
+title: "ST 558 - Homework 5"
+author: "Kyra Kapsaskis"
+format: html
+editor: visual
+---
+
+## Task 1
+
+Open-ended questions
+
+## Task 2: Fitting Models
+
+```{r}
+# libraries
+
+library(caret)
+library(tidyr)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(Hmisc)
+
+```
+
+
+Quick EDA/Data Preparation
+
+```{r}
+heart_data <- read.csv("https://www4.stat.ncsu.edu/~online/datasets/heart.csv")
+
+
+```
+
+
+
+```{r}
+# is there missing data? 
+# no
+
+# summarize the data
+describe(heart_data)
+# read about the data (https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+
+
+```
+
+```{r}
+# this is giving us summary stats for when heart disease is 0 and 1
+lapply(split(heart_data, heart_data$HeartDisease), describe)
+```
+
+```{r}
+help(lapply)
+
+```
+
+
+```{r}
+# cross tab 
+
+lapply(heart_data[, c("Sex", "ChestPainType", "RestingECG", "ExerciseAngina")], FUN = function(x) table(heart_data$HeartDisease, x))
+```
+
+```{r}
+str(heart_data)
+```
+
+
+```{r}
+
+# summarizing the numerical variables
+
+heart_data |>
+  group_by(HeartDisease) |>
+  dplyr::summarize(across(where(is.numeric),
+                   list("mean" = ~ mean(.x, na.rm = TRUE), "median" = ~ median(.x, na.rm = TRUE)), 
+                   .names = "{.fn}_{.col}"))
+```
+```{r}
+help(factor)
+```
+
+
+```{r}
+# create a new variable that is a factor version of the HeartDisease variable (if needed)
+# typeof(heart_data$HeartDisease)
+
+heart_data <- heart_data |>
+  mutate(HeartDisease_factor = factor(HeartDisease, labels = c("Normal", "heart disease"))) |>
+  select(-any_of(c("ST_Slope", "HeartDisease")))
+       
+
+```
+
+
+```{r}
+# Create dummy columns for the three categorical predictors using dummyVars() and predict(). 
+# Make sure these columns are in the data frame. 
+
+help(dummyVars)
+
+```
+
+```{r}
+# making our character variables factor variables, so we can make dummy columns
+
+heart_data[,c("Sex", "ChestPainType", "RestingECG")] = lapply(heart_data[,c("Sex", "ChestPainType", "RestingECG")],factor) 
+```
+
+
+```{r}
+# create new variable with names of important factors in it
+
+imp_factors = c("Sex", "ChestPainType", "RestingECG")
+```
+
+
+```{r}
+new_dummy_cols = dummyVars(~Sex + ChestPainType + RestingECG,heart_data,fullRank = T)
+heart_data=cbind(heart_data,predict(new_dummy_cols, heart_data[,imp_factors]))
+```
+
+```{r}
+
+```
+
+Split your Data
+
+```{r}
+help(trainControl)
+```
+
+
+```{r}
+# defining cv arguments
+
+cv_settings <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
+
+```
+
+
+```{r}
+# into training and testing set
+```
+
+kNN
+
+```{r}
+# first want to set up a cross validation function - training set will also be split into its own little training/testing set (k fold and then averaging across all combinations). test set is reserved for after model is fit. should not be included in model fitting
+
+
+# remember not to include both versions of variables
+# data2 = data[,c("HeartDisease_factor","Sex.M","ChestPainType.ATA",...)]
+# HeartDisease_factor ~ . , data
+```
+
+Logistic Regression
+
+```{r}
+# R will do the dummy coding for you so you can use the regular categorical variables, not dummy. use factor variables
+```
+
+Tree Models
+
+```{r}
+# also create a new dataset with cbind of a version of the predictors that only use the dummy columns
+# doesn't handle categorical variables well
+# could PROBABLY use same dataset EXCEPT it's possible it will want heart disease as a nonfactor
+
+
+```
+
