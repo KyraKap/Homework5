@@ -23,49 +23,50 @@ library(Hmisc)
 
 ```
 
+### Quick EDA/Data Preparation
 
-Quick EDA/Data Preparation
+------------------------------------------------------------------------
+
+### 1.) understand the data better
 
 ```{r}
-heart_data <- read.csv("https://www4.stat.ncsu.edu/~online/datasets/heart.csv")
 
+# reading in the data and reading about the data 
+# (https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+
+heart_data <- read.csv("https://www4.stat.ncsu.edu/~online/datasets/heart.csv")
+```
+
+```{r}
+# checking for missing data and summarizing the data
+
+describe(heart_data)
+
+# there is a column here that gives you the number of missing data points
+
+# Looks like we're good!
 
 ```
 
-
-
 ```{r}
-# is there missing data? 
-# no
 
-# summarize the data
-describe(heart_data)
-# read about the data (https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+# summary statistics
 
-
+summary(heart_data)
 ```
 
 ```{r}
 # this is giving us summary stats for when heart disease is 0 and 1
+
 lapply(split(heart_data, heart_data$HeartDisease), describe)
 ```
 
 ```{r}
-help(lapply)
-
-```
-
-
-```{r}
-# cross tab 
+# cross tab - using lapply to create many different contingency tables
 
 lapply(heart_data[, c("Sex", "ChestPainType", "RestingECG", "ExerciseAngina")], FUN = function(x) table(heart_data$HeartDisease, x))
-```
 
-```{r}
-str(heart_data)
 ```
-
 
 ```{r}
 
@@ -77,14 +78,23 @@ heart_data |>
                    list("mean" = ~ mean(.x, na.rm = TRUE), "median" = ~ median(.x, na.rm = TRUE)), 
                    .names = "{.fn}_{.col}"))
 ```
+
+------------------------------------------------------------------------
+### 2.) creating a new variable
+
 ```{r}
+# seeing what the structure of the data is currently
+str(heart_data)
+```
+
+```{r}
+# figuring out how to use the factor function
 help(factor)
 ```
 
-
 ```{r}
 # create a new variable that is a factor version of the HeartDisease variable (if needed)
-# typeof(heart_data$HeartDisease)
+# also drop original columns
 
 heart_data <- heart_data |>
   mutate(HeartDisease_factor = factor(HeartDisease, labels = c("Normal", "heart disease"))) |>
@@ -94,9 +104,12 @@ heart_data <- heart_data |>
 ```
 
 
+------------------------------------------------------------------------
+### 3.) create dummy variables to prepare for kNN
+
 ```{r}
 # Create dummy columns for the three categorical predictors using dummyVars() and predict(). 
-# Make sure these columns are in the data frame. 
+ 
 
 help(dummyVars)
 
@@ -108,29 +121,38 @@ help(dummyVars)
 heart_data[,c("Sex", "ChestPainType", "RestingECG")] = lapply(heart_data[,c("Sex", "ChestPainType", "RestingECG")],factor) 
 ```
 
-
 ```{r}
 # create new variable with names of important factors in it
 
 imp_factors = c("Sex", "ChestPainType", "RestingECG")
 ```
 
-
 ```{r}
 new_dummy_cols = dummyVars(~Sex + ChestPainType + RestingECG,heart_data,fullRank = T)
 heart_data=cbind(heart_data,predict(new_dummy_cols, heart_data[,imp_factors]))
 ```
 
-```{r}
 
+## Split your Data
+
+```{r}
+# set a seed for reproducibility
+set.seed(10)
+
+#indices to split on
+train <- sample(1:nrow(heart_data), size = nrow(heart_data)*0.8)
+test <- dplyr::setdiff(1:nrow(heart_data), train)
+
+#subset
+heartTrain <- heart_data[train, ]
+heartTest <- heart_data[test, ]
 ```
 
-Split your Data
+## kNN
 
 ```{r}
 help(trainControl)
 ```
-
 
 ```{r}
 # defining cv arguments
@@ -139,12 +161,40 @@ cv_settings <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
 
 ```
 
-
 ```{r}
-# into training and testing set
+help(train)
 ```
 
-kNN
+```{r}
+tune_grid <- expand.grid(k = 1:40)
+```
+
+
+```{r}
+
+# need to add TuneGrid
+
+my_knn <- train(HeartDisease_factor ~., data = heartTrain, method = "knn",
+  trControl = cv_settings,
+  preProcess = c("center", "scale"),
+  tuneGrid = tune_grid)
+```
+
+```{r}
+my_knn
+```
+```{r}
+help(predict)
+```
+
+```{r}
+knn_predict <- predict(my_knn, heartTest)
+```
+
+```{r}
+summary(knn_predict)
+```
+
 
 ```{r}
 # first want to set up a cross validation function - training set will also be split into its own little training/testing set (k fold and then averaging across all combinations). test set is reserved for after model is fit. should not be included in model fitting
@@ -155,11 +205,81 @@ kNN
 # HeartDisease_factor ~ . , data
 ```
 
+```{r}
+# confusion matrix
+
+confusionMatrix(knn_predict, heartTest$HeartDisease_factor)
+```
+
+
 Logistic Regression
 
 ```{r}
 # R will do the dummy coding for you so you can use the regular categorical variables, not dummy. use factor variables
+
+#glmFit <- glm(good ~ yards, 
+#             data = FGData, 
+#              family = "binomial")
+
+my_logreg_1 <- train(HeartDisease_factor ~ ChestPainType.ATA + RestingECG.ST, data = heartTrain, method = "glm", family = "binomial", trControl = cv_settings)
+
 ```
+
+```{r}
+my_logreg_1
+```
+
+```{r}
+log1_predict <- predict(my_logreg_1, heartTest)
+```
+
+```{r}
+log1_predict
+```
+```{r}
+summary(log1_predict)
+```
+
+
+```{r}
+my_logreg_2 <- train(HeartDisease_factor ~ Age + Cholesterol, data = heartTrain, method = "glm", family = "binomial", trControl = cv_settings)
+```
+
+```{r}
+my_logreg_2
+```
+
+```{r}
+log2_predict <- predict(my_logreg_2, heartTest)
+```
+
+```{r}
+summary(log2_predict)
+```
+
+
+
+```{r}
+my_logreg_3 <- train(HeartDisease_factor ~ MaxHR + RestingBP, data = heartTrain, method = "glm", family = "binomial", trControl = cv_settings)
+```
+
+```{r}
+log3_predict <- predict(my_logreg_3, heartTest)
+```
+
+```{r}
+summary(log3_predict)
+```
+
+```{r}
+log_predictions <- c(log1_predict, log2_predict, log3_predict)
+```
+
+```{r}
+confusionMatrix(log_predictions, heartTest$HeartDisease_factor)
+```
+
+
 
 Tree Models
 
@@ -170,4 +290,3 @@ Tree Models
 
 
 ```
-
