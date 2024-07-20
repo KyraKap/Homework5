@@ -7,12 +7,19 @@ editor: visual
 
 ## Task 1
 
-Open-ended questions
+1.) The bootstrap samples serve as a cross validation method that compares different sets of data in order to improve the fit. The cross validation helps to create each tree. 
+
+2.) A bagged tree algorithm separates the data and randomly samples data from within each section. then it creates a separate tree and combines them to create a better tree. Then it uses OOB modeling as internal validation. 
+
+3.) A general linear model is a supervised learning method used to predict continuous response variables. 
+
+4.) Adding an interaction term to a multiple linear regression allows it to fit nonlinear data and explore more complex and accurate ways of predicting the response variable. 
+
+5.) The data is split so that we can test our model on data that has not been used to train it. This helps us to generalize beyond the sample better and to avoid overfitting the model to our sample. 
+
 
 ## Task 2: Fitting Models
-```{r}
-install.packages("randomForest")
-```
+
 
 ```{r}
 # libraries
@@ -73,7 +80,7 @@ lapply(heart_data[, c("Sex", "ChestPainType", "RestingECG", "ExerciseAngina")], 
 
 ```{r}
 
-# summarizing the numerical variables
+# summarizing the numerical variables. Now we can really see what predictors we might want to use in our models
 
 heart_data |>
   group_by(HeartDisease) |>
@@ -131,11 +138,14 @@ imp_factors = c("Sex", "ChestPainType", "RestingECG")
 ```
 
 ```{r}
+
+# using these important factors to create the new columns
+
 new_dummy_cols = dummyVars(~Sex + ChestPainType + RestingECG,heart_data,fullRank = T)
 heart_data=cbind(heart_data,predict(new_dummy_cols, heart_data[,imp_factors]))
 ```
 
-
+------------------------------------------------------------------------
 ## Split your Data
 
 ```{r}
@@ -151,14 +161,16 @@ heartTrain <- heart_data[train, ]
 heartTest <- heart_data[test, ]
 ```
 
+------------------------------------------------------------------------
 ## kNN
 
 ```{r}
+# lets learn how to use this training function so we can build our models
 help(trainControl)
 ```
 
 ```{r}
-# defining cv arguments
+# defining cv arguments that will be used as an argument inside each model function
 
 cv_settings <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
 
@@ -169,13 +181,15 @@ help(train)
 ```
 
 ```{r}
+
+# lets set our tuning parameters so we can fit our knn
 tune_grid <- expand.grid(k = 1:40)
 ```
 
 
 ```{r}
 
-# need to add TuneGrid
+# here is the function for our first model
 
 my_knn <- train(HeartDisease_factor ~., data = heartTrain, method = "knn",
   trControl = cv_settings,
@@ -191,6 +205,7 @@ help(predict)
 ```
 
 ```{r}
+# time to use the predict function
 knn_predict <- predict(my_knn, heartTest)
 ```
 
@@ -200,8 +215,10 @@ summary(knn_predict)
 
 
 ```{r}
-# first want to set up a cross validation function - training set will also be split into its own little training/testing set (k fold and then averaging across all combinations). test set is reserved for after model is fit. should not be included in model fitting
 
+#Comments
+
+# first want to set up a cross validation function - training set will also be split into its own little training/testing set (k fold and then averaging across all combinations). test set is reserved for after model is fit. should not be included in model fitting
 
 # remember not to include both versions of variables
 # data2 = data[,c("HeartDisease_factor","Sex.M","ChestPainType.ATA",...)]
@@ -213,9 +230,9 @@ summary(knn_predict)
 
 confusionMatrix(knn_predict, heartTest$HeartDisease_factor)
 ```
+------------------------------------------------------------------------
 
-
-Logistic Regression
+## Logistic Regression
 
 ```{r}
 # R will do the dummy coding for you so you can use the regular categorical variables, not dummy. use factor variables
@@ -275,6 +292,7 @@ summary(log3_predict)
 ```
 
 ```{r}
+# Now let's look at the accuracy of all three
 
 confusionMatrix(log1_predict, heartTest$HeartDisease_factor)
 confusionMatrix(log2_predict, heartTest$HeartDisease_factor)
@@ -285,7 +303,7 @@ confusionMatrix(log3_predict, heartTest$HeartDisease_factor)
 
 ## the best logistic regression model was the one with Maximum Heart Rate and Resting Blood Pressure
 
-
+------------------------------------------------------------------------
 
 # Tree Models
 
@@ -318,12 +336,8 @@ summary(tree_predict)
 ```{r}
 confusionMatrix(tree_predict, heartTest$HeartDisease_factor)
 ```
-
+------------------------------------------------------------------------
 ## Random Forest Model
-
-```{r}
-install.packages("randomForest")
-```
 
 
 ```{r}
@@ -343,17 +357,18 @@ summary(rf_predict)
 ```{r}
 confusionMatrix(rf_predict, heartTest$HeartDisease_factor)
 ```
+------------------------------------------------------------------------
 
-
-
-```{r}
 # Boosted Tree Model
-
+```{r}
 library(gbm)
 ```
 
 
 ```{r}
+
+# We have new parameters that we need to pay attention to and set here
+
 tuning_params <- expand.grid(n.trees = c(25, 50, 100, 200), interaction.depth = c(1, 2, 3), shrinkage = 0.1, n.minobsinnode = 10)
 
 ```
@@ -369,6 +384,8 @@ my_boost
 ```
 
 ```{r}
+# Using the predict function on our boosted tree
+
 boost_predict <- predict(my_boost, heartTest)
 ```
 
@@ -382,6 +399,9 @@ boost_predict
 
 
 ```{r}
+
+# How well did it do? 
+
 confusionMatrix(boost_predict, heartTest$HeartDisease_factor)
 ```
 
@@ -396,10 +416,9 @@ rf_accuracy <- confusionMatrix(rf_predict, heartTest$HeartDisease_factor)
 boost_accuracy <- confusionMatrix(boost_predict, heartTest$HeartDisease_factor)
 ```
 
+# Which model is best??
 
 ```{r}
-
-# Which model is the best
 
 confusion_final <- c(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, tree_accuracy, rf_accuracy, boost_accuracy)
 ```
@@ -408,7 +427,7 @@ confusion_final <- c(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, 
 confusion_final
 ```
 
-# ChestPainType was the best predictor and in the Tree Model and RF Model
+# ChestPainType was the best predictor and in the Tree Model and RF Model! 
 
 ```{r}
 
