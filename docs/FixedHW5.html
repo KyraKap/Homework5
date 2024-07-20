@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kyra Kapsaskis">
 
-<title>ST 558 - Homework 5</title>
+<title>ST 558 - Fixed Homework 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ST 558 - Homework 5</h1>
+<h1 class="title">ST 558 - Fixed Homework 5</h1>
 </div>
 
 
@@ -666,35 +666,26 @@ $ExerciseAngina
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>new_dummy_cols <span class="ot">=</span> <span class="fu">dummyVars</span>(<span class="sc">~</span>Sex <span class="sc">+</span> ChestPainType <span class="sc">+</span> RestingECG,heart_data,<span class="at">fullRank =</span> T)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>heart_data<span class="ot">=</span><span class="fu">cbind</span>(heart_data,<span class="fu">predict</span>(new_dummy_cols, heart_data[,imp_factors]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<table class="table">
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">## Split your Data</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">```{.r .cell-code} # set a seed for reproducibility set.seed(10)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">#indices to split on train &lt;- sample(1:nrow(heart_data), size = nrow(heart_data)*0.8) test &lt;- dplyr::setdiff(1:nrow(heart_data), train)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">#subset heartTrain &lt;- heart_data[train, ] heartTest &lt;- heart_data[test, ] ``` :::</td>
-</tr>
-</tbody>
-</table>
+<hr>
+</section>
+<section id="split-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="split-your-data">Split your Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed for reproducibility</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#indices to split on</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(heart_data), <span class="at">size =</span> <span class="fu">nrow</span>(heart_data)<span class="sc">*</span><span class="fl">0.8</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">setdiff</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(heart_data), train)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#subset</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>heartTrain <span class="ot">&lt;-</span> heart_data[train, ]</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>heartTest <span class="ot">&lt;-</span> heart_data[test, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
 </section>
 <section id="knn" class="level2">
 <h2 class="anchored" data-anchor-id="knn">kNN</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets learn how to use this training function so we can build our models</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(trainControl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># defining cv arguments that will be used as an argument inside each model function</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1208,7 +1199,7 @@ The final value used for the model was cp = 0.01.</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HW5_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="FixedHW5_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1255,118 +1246,147 @@ Prediction      Normal heart disease
                                           </code></pre>
 </div>
 </div>
-<table class="table">
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">## Random Forest Model</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} my_rf &lt;- train(HeartDisease_factor ~ ChestPainType, data = heartTrain, method = "rf", trControl = cv_settings,  tuneGrid = expand.grid(mtry = seq(1, 4, 1)))</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stderr}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">:::</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} my_rf</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">``` Random Forest</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">734 samples 1 predictor 2 classes: ‘Normal’, ‘heart disease’</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">No pre-processing Resampling: Cross-Validated (10 fold, repeated 3 times) Summary of sample sizes: 660, 660, 661, 661, 661, 661, … Resampling results across tuning parameters:</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">mtry Accuracy Kappa 1 0.7505615 0.4957108 2 0.7614711 0.5198206 3 0.7614711 0.5198206 4 0.7614711 0.5198206</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Accuracy was used to select the optimal model using the largest value. The final value used for the model was mtry = 2. ```</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: :::</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} rf_predict &lt;- predict(my_rf, heartTest)</code> :::</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} summary(rf_predict)</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>Normal heart disease 80           104</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: :::</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} confusionMatrix(rf_predict, heartTest$HeartDisease_factor)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">``` Confusion Matrix and Statistics</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Reference Prediction Normal heart disease Normal 57 23 heart disease 22 82</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Accuracy : 0.7554 95% CI : (0.6868, 0.8157) No Information Rate : 0.5707 P-Value [Acc &gt; NIR] : 1.364e-07</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kappa : 0.5017</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Mcnemar’s Test P-Value : 1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Sensitivity : 0.7215 Specificity : 0.7810 Pos Pred Value : 0.7125 Neg Pred Value : 0.7885 Prevalence : 0.4293 Detection Rate : 0.3098 Detection Prevalence : 0.4348 Balanced Accuracy : 0.7512</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">‘Positive’ Class : Normal</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">```</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: :::</td>
-</tr>
-</tbody>
-</table>
+<hr>
+</section>
+<section id="random-forest-model" class="level2">
+<h2 class="anchored" data-anchor-id="random-forest-model">Random Forest Model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>my_rf <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> ChestPainType, </span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"rf"</span>, <span class="at">trControl =</span> cv_settings,  <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">mtry =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range
+Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry:
+reset to within valid range</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>my_rf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Random Forest 
+
+734 samples
+  1 predictor
+  2 classes: 'Normal', 'heart disease' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+Summary of sample sizes: 660, 660, 661, 661, 661, 661, ... 
+Resampling results across tuning parameters:
+
+  mtry  Accuracy   Kappa    
+  1     0.7505615  0.4957108
+  2     0.7614711  0.5198206
+  3     0.7614711  0.5198206
+  4     0.7614711  0.5198206
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was mtry = 2.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>rf_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_rf, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rf_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Normal heart disease 
+           80           104 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(rf_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+               Reference
+Prediction      Normal heart disease
+  Normal            57            23
+  heart disease     22            82
+                                          
+               Accuracy : 0.7554          
+                 95% CI : (0.6868, 0.8157)
+    No Information Rate : 0.5707          
+    P-Value [Acc &gt; NIR] : 1.364e-07       
+                                          
+                  Kappa : 0.5017          
+                                          
+ Mcnemar's Test P-Value : 1               
+                                          
+            Sensitivity : 0.7215          
+            Specificity : 0.7810          
+         Pos Pred Value : 0.7125          
+         Neg Pred Value : 0.7885          
+             Prevalence : 0.4293          
+         Detection Rate : 0.3098          
+   Detection Prevalence : 0.4348          
+      Balanced Accuracy : 0.7512          
+                                          
+       'Positive' Class : Normal          
+                                          </code></pre>
+</div>
+</div>
+<hr>
 </section>
 </section>
 <section id="boosted-tree-model" class="level1">
 <h1>Boosted Tree Model</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gbm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gbm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loaded gbm 2.2.2</code></pre>
 </div>
@@ -1375,15 +1395,15 @@ Prediction      Normal heart disease
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We have new parameters that we need to pay attention to and set here</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>tuning_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">n.trees =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>), <span class="at">interaction.depth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">shrinkage =</span> <span class="fl">0.1</span>, <span class="at">n.minobsinnode =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We have new parameters that we need to pay attention to and set here</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>tuning_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">n.trees =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>), <span class="at">interaction.depth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">shrinkage =</span> <span class="fl">0.1</span>, <span class="at">n.minobsinnode =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>my_boost <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> Cholesterol <span class="sc">+</span> RestingBP <span class="sc">+</span> ChestPainType, <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"gbm"</span>, <span class="at">trControl =</span> cv_settings, <span class="at">tuneGrid =</span> tuning_params, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>my_boost <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> Cholesterol <span class="sc">+</span> RestingBP <span class="sc">+</span> ChestPainType, <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"gbm"</span>, <span class="at">trControl =</span> cv_settings, <span class="at">tuneGrid =</span> tuning_params, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>my_boost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>my_boost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Stochastic Gradient Boosting 
 
@@ -1419,19 +1439,19 @@ The final values used for the model were n.trees = 200, interaction.depth =
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the predict function on our boosted tree</span></span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>boost_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_boost, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the predict function on our boosted tree</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>boost_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_boost, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boost_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boost_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Normal heart disease 
            71           113 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>boost_predict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>boost_predict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] Normal        Normal        Normal        Normal        Normal       
   [6] heart disease Normal        heart disease Normal        heart disease
@@ -1474,9 +1494,9 @@ Levels: Normal heart disease</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How well did it do? </span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(boost_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How well did it do? </span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(boost_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
@@ -1508,22 +1528,22 @@ Prediction      Normal heart disease
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>knn_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(knn_predict, heartTest<span class="sc">$</span>HeartDisease_factor) </span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>log1_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log1_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>log2_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log2_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>log3_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log3_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>tree_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(tree_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
-<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>rf_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(rf_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
-<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a>boost_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(boost_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>knn_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(knn_predict, heartTest<span class="sc">$</span>HeartDisease_factor) </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>log1_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log1_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>log2_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log2_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>log3_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log3_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>tree_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(tree_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>rf_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(rf_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>boost_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(boost_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="which-model-is-best" class="level1">
 <h1>Which model is best??</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>confusion_final <span class="ot">&lt;-</span> <span class="fu">c</span>(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, tree_accuracy, rf_accuracy, boost_accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>confusion_final <span class="ot">&lt;-</span> <span class="fu">c</span>(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, tree_accuracy, rf_accuracy, boost_accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>confusion_final</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>confusion_final</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$positive
 [1] "Normal"
@@ -1746,13 +1766,6 @@ list()</code></pre>
 </section>
 <section id="chestpaintype-was-the-best-predictor-and-in-the-tree-model-and-rf-model" class="level1">
 <h1>ChestPainType was the best predictor and in the Tree Model and RF Model!</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random notes</span></span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># also create a new dataset with cbind of a version of the predictors that only use the dummy columns</span></span>
-<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># doesn't handle categorical variables well</span></span>
-<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="co"># could PROBABLY use same dataset EXCEPT it's possible it will want heart disease as a nonfactor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 </section>
