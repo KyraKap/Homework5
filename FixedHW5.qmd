@@ -1,5 +1,5 @@
 ---
-title: "ST 558 - Homework 5"
+title: "ST 558 - Fixed Homework 5"
 author: "Kyra Kapsaskis"
 format: html
 editor: visual
@@ -7,19 +7,17 @@ editor: visual
 
 ## Task 1
 
-1.) The bootstrap samples serve as a cross validation method that compares different sets of data in order to improve the fit. The cross validation helps to create each tree. 
+1.) The bootstrap samples serve as a cross validation method that compares different sets of data in order to improve the fit. The cross validation helps to create each tree.
 
-2.) A bagged tree algorithm separates the data and randomly samples data from within each section. then it creates a separate tree and combines them to create a better tree. Then it uses OOB modeling as internal validation. 
+2.) A bagged tree algorithm separates the data and randomly samples data from within each section. then it creates a separate tree and combines them to create a better tree. Then it uses OOB modeling as internal validation.
 
-3.) A general linear model is a supervised learning method used to predict continuous response variables. 
+3.) A general linear model is a supervised learning method used to predict continuous response variables.
 
-4.) Adding an interaction term to a multiple linear regression allows it to fit nonlinear data and explore more complex and accurate ways of predicting the response variable. 
+4.) Adding an interaction term to a multiple linear regression allows it to fit nonlinear data and explore more complex and accurate ways of predicting the response variable.
 
-5.) The data is split so that we can test our model on data that has not been used to train it. This helps us to generalize beyond the sample better and to avoid overfitting the model to our sample. 
-
+5.) The data is split so that we can test our model on data that has not been used to train it. This helps us to generalize beyond the sample better and to avoid overfitting the model to our sample.
 
 ## Task 2: Fitting Models
-
 
 ```{r}
 # libraries
@@ -49,6 +47,7 @@ heart_data <- read.csv("https://www4.stat.ncsu.edu/~online/datasets/heart.csv")
 ```
 
 ```{r}
+
 # checking for missing data and summarizing the data
 
 describe(heart_data)
@@ -67,12 +66,14 @@ summary(heart_data)
 ```
 
 ```{r}
+
 # this is giving us summary stats for when heart disease is 0 and 1
 
 lapply(split(heart_data, heart_data$HeartDisease), describe)
 ```
 
 ```{r}
+
 # cross tab - using lapply to create many different contingency tables
 
 lapply(heart_data[, c("Sex", "ChestPainType", "RestingECG", "ExerciseAngina")], FUN = function(x) table(heart_data$HeartDisease, x))
@@ -88,10 +89,10 @@ heart_data |>
   dplyr::summarize(across(where(is.numeric),
                    list("mean" = ~ mean(.x, na.rm = TRUE), "median" = ~ median(.x, na.rm = TRUE)), 
                    .names = "{.fn}_{.col}"))
+
 ```
 
 ------------------------------------------------------------------------
-
 
 ### 2.) creating a new variable
 
@@ -110,6 +111,7 @@ help(factor)
 ```
 
 ```{r}
+
 # create a new variable that is a factor version of the HeartDisease variable (if needed)
 # also drop original columns
 
@@ -119,7 +121,6 @@ heart_data <- heart_data |>
        
 
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -154,6 +155,7 @@ heart_data=cbind(heart_data,predict(new_dummy_cols, heart_data[,imp_factors]))
 ```
 
 ------------------------------------------------------------------------
+
 ## Split your Data
 
 ```{r}
@@ -172,13 +174,6 @@ heartTest <- heart_data[test, ]
 ------------------------------------------------------------------------
 
 ## kNN
-
-```{r}
-
-# lets learn how to use this training function so we can build our models
-help(trainControl)
-
-```
 
 ```{r}
 
@@ -201,7 +196,6 @@ tune_grid <- expand.grid(k = 1:40)
 
 ```
 
-
 ```{r}
 
 # here is the function for our first model
@@ -218,6 +212,7 @@ my_knn <- train(HeartDisease_factor ~., data = heartTrain, method = "knn",
 my_knn
 
 ```
+
 ```{r}
 help(predict)
 ```
@@ -230,7 +225,6 @@ knn_predict <- predict(my_knn, heartTest)
 ```{r}
 summary(knn_predict)
 ```
-
 
 ```{r}
 
@@ -283,10 +277,10 @@ log1_predict <- predict(my_logreg_1, heartTest)
 ```{r}
 log1_predict
 ```
+
 ```{r}
 summary(log1_predict)
 ```
-
 
 ```{r}
 my_logreg_2 <- train(HeartDisease_factor ~ Age + Cholesterol, data = heartTrain, method = "glm", family = "binomial", trControl = cv_settings)
@@ -303,8 +297,6 @@ log2_predict <- predict(my_logreg_2, heartTest)
 ```{r}
 summary(log2_predict)
 ```
-
-
 
 ```{r}
 my_logreg_3 <- train(HeartDisease_factor ~ MaxHR + RestingBP, data = heartTrain, method = "glm", family = "binomial", trControl = cv_settings)
@@ -327,7 +319,6 @@ confusionMatrix(log3_predict, heartTest$HeartDisease_factor)
 
 ```
 
-
 ## the best logistic regression model was the one with Maximum Heart Rate and Resting Blood Pressure
 
 ------------------------------------------------------------------------
@@ -343,14 +334,17 @@ library(tree)
 ```
 
 ## Classification Tree
+
 ```{r}
 my_tree <- train(HeartDisease_factor ~ ChestPainType, 
                 data = heartTrain, method = "rpart", trControl = cv_settings,  tuneGrid = expand.grid(cp = seq(0, 0.1, 0.001)))
 my_tree
 ```
+
 ```{r}
 plot(my_tree)
 ```
+
 ```{r}
 tree_predict <- predict(my_tree, heartTest)
 ```
@@ -359,14 +353,13 @@ tree_predict <- predict(my_tree, heartTest)
 summary(tree_predict)
 ```
 
-
 ```{r}
 confusionMatrix(tree_predict, heartTest$HeartDisease_factor)
 ```
 
 ------------------------------------------------------------------------
-## Random Forest Model
 
+## Random Forest Model
 
 ```{r}
 my_rf <- train(HeartDisease_factor ~ ChestPainType, 
@@ -386,14 +379,13 @@ summary(rf_predict)
 confusionMatrix(rf_predict, heartTest$HeartDisease_factor)
 ```
 
-
 ------------------------------------------------------------------------
 
 # Boosted Tree Model
+
 ```{r}
 library(gbm)
 ```
-
 
 ```{r}
 
@@ -402,7 +394,6 @@ library(gbm)
 tuning_params <- expand.grid(n.trees = c(25, 50, 100, 200), interaction.depth = c(1, 2, 3), shrinkage = 0.1, n.minobsinnode = 10)
 
 ```
-
 
 ```{r}
 my_boost <- train(HeartDisease_factor ~ Cholesterol + RestingBP + ChestPainType, data = heartTrain, method = "gbm", trControl = cv_settings, tuneGrid = tuning_params, verbose = FALSE)
@@ -427,14 +418,12 @@ summary(boost_predict)
 boost_predict
 ```
 
-
 ```{r}
 
 # How well did it do? 
 
 confusionMatrix(boost_predict, heartTest$HeartDisease_factor)
 ```
-
 
 ```{r}
 knn_accuracy <- confusionMatrix(knn_predict, heartTest$HeartDisease_factor) 
@@ -457,16 +446,4 @@ confusion_final <- c(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, 
 confusion_final
 ```
 
-# ChestPainType was the best predictor and in the Tree Model and RF Model! 
-
-```{r}
-
-# random notes
-
-# also create a new dataset with cbind of a version of the predictors that only use the dummy columns
-# doesn't handle categorical variables well
-# could PROBABLY use same dataset EXCEPT it's possible it will want heart disease as a nonfactor
-
-
-```
-
+# ChestPainType was the best predictor and in the Tree Model and RF Model!
