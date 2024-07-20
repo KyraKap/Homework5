@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kyra Kapsaskis">
+
+<title>ST 558 - Homework 5</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ST 558 - Homework 5</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kyra Kapsaskis </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="task-1" class="level2">
+<h2 class="anchored" data-anchor-id="task-1">Task 1</h2>
+<p>1.) The bootstrap samples serve as a cross validation method that compares different sets of data in order to improve the fit. The cross validation helps to create each tree.</p>
+<p>2.) A bagged tree algorithm separates the data and randomly samples data from within each section. then it creates a separate tree and combines them to create a better tree. Then it uses OOB modeling as internal validation.</p>
+<p>3.) A general linear model is a supervised learning method used to predict continuous response variables.</p>
+<p>4.) Adding an interaction term to a multiple linear regression allows it to fit nonlinear data and explore more complex and accurate ways of predicting the response variable.</p>
+<p>5.) The data is split so that we can test our model on data that has not been used to train it. This helps us to generalize beyond the sample better and to avoid overfitting the model to our sample.</p>
+</section>
+<section id="task-2-fitting-models" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-fitting-models">Task 2: Fitting Models</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+✖ purrr::lift()   masks caret::lift()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'Hmisc'
+
+The following objects are masked from 'package:dplyr':
+
+    src, summarize
+
+The following objects are masked from 'package:base':
+
+    format.pval, units</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>randomForest 4.7-1.1
+Type rfNews() to see new features/changes/bug fixes.
+
+Attaching package: 'randomForest'
+
+The following object is masked from 'package:dplyr':
+
+    combine
+
+The following object is masked from 'package:ggplot2':
+
+    margin</code></pre>
+</div>
+</div>
+<section id="quick-edadata-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="quick-edadata-preparation">Quick EDA/Data Preparation</h3>
+<hr>
+</section>
+<section id="understand-the-data-better" class="level3">
+<h3 class="anchored" data-anchor-id="understand-the-data-better">1.) understand the data better</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading in the data and reading about the data </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>heart_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/heart.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># checking for missing data and summarizing the data</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(heart_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>heart_data 
+
+ 12  Variables      918  Observations
+--------------------------------------------------------------------------------
+Age 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     918        0       50    0.999    53.51    10.71       37       40 
+     .25      .50      .75      .90      .95 
+      47       54       60       65       68 
+
+lowest : 28 29 30 31 32, highest: 73 74 75 76 77
+--------------------------------------------------------------------------------
+Sex 
+       n  missing distinct 
+     918        0        2 
+                    
+Value         F    M
+Frequency   193  725
+Proportion 0.21 0.79
+--------------------------------------------------------------------------------
+ChestPainType 
+       n  missing distinct 
+     918        0        4 
+                                  
+Value        ASY   ATA   NAP    TA
+Frequency    496   173   203    46
+Proportion 0.540 0.188 0.221 0.050
+--------------------------------------------------------------------------------
+RestingBP 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     918        0       67    0.993    132.4    20.09      106      110 
+     .25      .50      .75      .90      .95 
+     120      130      140      160      160 
+
+lowest :   0  80  92  94  95, highest: 180 185 190 192 200
+--------------------------------------------------------------------------------
+Cholesterol 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     918        0      222    0.993    198.8      116      0.0      0.0 
+     .25      .50      .75      .90      .95 
+   173.2    223.0    267.0    305.0    331.3 
+
+lowest :   0  85 100 110 113, highest: 491 518 529 564 603
+--------------------------------------------------------------------------------
+FastingBS 
+       n  missing distinct     Info      Sum     Mean      Gmd 
+     918        0        2    0.536      214   0.2331   0.3579 
+
+--------------------------------------------------------------------------------
+RestingECG 
+       n  missing distinct 
+     918        0        3 
+                               
+Value         LVH Normal     ST
+Frequency     188    552    178
+Proportion  0.205  0.601  0.194
+--------------------------------------------------------------------------------
+MaxHR 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     918        0      119        1    136.8    29.03       96      103 
+     .25      .50      .75      .90      .95 
+     120      138      156      170      178 
+
+lowest :  60  63  67  69  70, highest: 190 192 194 195 202
+--------------------------------------------------------------------------------
+ExerciseAngina 
+       n  missing distinct 
+     918        0        2 
+                      
+Value          N     Y
+Frequency    547   371
+Proportion 0.596 0.404
+--------------------------------------------------------------------------------
+Oldpeak 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     918        0       53    0.934   0.8874    1.126      0.0      0.0 
+     .25      .50      .75      .90      .95 
+     0.0      0.6      1.5      2.3      3.0 
+
+lowest : -2.6 -2   -1.5 -1.1 -1  , highest: 4.2  4.4  5    5.6  6.2 
+--------------------------------------------------------------------------------
+ST_Slope 
+       n  missing distinct 
+     918        0        3 
+                            
+Value       Down  Flat    Up
+Frequency     63   460   395
+Proportion 0.069 0.501 0.430
+--------------------------------------------------------------------------------
+HeartDisease 
+       n  missing distinct     Info      Sum     Mean      Gmd 
+     918        0        2    0.741      508   0.5534   0.4948 
+
+--------------------------------------------------------------------------------</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># there is a column here that gives you the number of missing data points</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Looks like we're good!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(heart_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Age            Sex            ChestPainType        RestingBP    
+ Min.   :28.00   Length:918         Length:918         Min.   :  0.0  
+ 1st Qu.:47.00   Class :character   Class :character   1st Qu.:120.0  
+ Median :54.00   Mode  :character   Mode  :character   Median :130.0  
+ Mean   :53.51                                         Mean   :132.4  
+ 3rd Qu.:60.00                                         3rd Qu.:140.0  
+ Max.   :77.00                                         Max.   :200.0  
+  Cholesterol      FastingBS       RestingECG            MaxHR      
+ Min.   :  0.0   Min.   :0.0000   Length:918         Min.   : 60.0  
+ 1st Qu.:173.2   1st Qu.:0.0000   Class :character   1st Qu.:120.0  
+ Median :223.0   Median :0.0000   Mode  :character   Median :138.0  
+ Mean   :198.8   Mean   :0.2331                      Mean   :136.8  
+ 3rd Qu.:267.0   3rd Qu.:0.0000                      3rd Qu.:156.0  
+ Max.   :603.0   Max.   :1.0000                      Max.   :202.0  
+ ExerciseAngina        Oldpeak          ST_Slope          HeartDisease   
+ Length:918         Min.   :-2.6000   Length:918         Min.   :0.0000  
+ Class :character   1st Qu.: 0.0000   Class :character   1st Qu.:0.0000  
+ Mode  :character   Median : 0.6000   Mode  :character   Median :1.0000  
+                    Mean   : 0.8874                      Mean   :0.5534  
+                    3rd Qu.: 1.5000                      3rd Qu.:1.0000  
+                    Max.   : 6.2000                      Max.   :1.0000  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is giving us summary stats for when heart disease is 0 and 1</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">split</span>(heart_data, heart_data<span class="sc">$</span>HeartDisease), describe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`0`
+X[[i]] 
+
+ 12  Variables      410  Observations
+--------------------------------------------------------------------------------
+Age 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     410        0       48    0.999    50.55    10.75     35.0     38.9 
+     .25      .50      .75      .90      .95 
+    43.0     51.0     57.0     63.0     66.0 
+
+lowest : 28 29 30 31 32, highest: 71 72 74 75 76
+--------------------------------------------------------------------------------
+Sex 
+       n  missing distinct 
+     410        0        2 
+                      
+Value          F     M
+Frequency    143   267
+Proportion 0.349 0.651
+--------------------------------------------------------------------------------
+ChestPainType 
+       n  missing distinct 
+     410        0        4 
+                                  
+Value        ASY   ATA   NAP    TA
+Frequency    104   149   131    26
+Proportion 0.254 0.363 0.320 0.063
+--------------------------------------------------------------------------------
+RestingBP 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     410        0       49    0.987    130.2     18.1    105.5    110.0 
+     .25      .50      .75      .90      .95 
+   120.0    130.0    140.0    150.0    160.0 
+
+lowest :  80  94  98 100 101, highest: 170 172 178 180 190
+--------------------------------------------------------------------------------
+Cholesterol 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     410        0      169        1    227.1    75.75    91.75   165.90 
+     .25      .50      .75      .90      .95 
+  197.25   227.00   266.75   305.10   325.00 
+
+lowest :   0  85 100 126 129, highest: 412 417 458 468 564
+--------------------------------------------------------------------------------
+FastingBS 
+       n  missing distinct     Info      Sum     Mean      Gmd 
+     410        0        2    0.287       44   0.1073   0.1921 
+
+--------------------------------------------------------------------------------
+RestingECG 
+       n  missing distinct 
+     410        0        3 
+                               
+Value         LVH Normal     ST
+Frequency      82    267     61
+Proportion  0.200  0.651  0.149
+--------------------------------------------------------------------------------
+MaxHR 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     410        0       90    0.999    148.2    26.34    108.4    116.0 
+     .25      .50      .75      .90      .95 
+   134.0    150.0    165.0    178.0    182.0 
+
+lowest :  69  80  86  90  96, highest: 188 190 192 194 202
+--------------------------------------------------------------------------------
+ExerciseAngina 
+       n  missing distinct 
+     410        0        2 
+                      
+Value          N     Y
+Frequency    355    55
+Proportion 0.866 0.134
+--------------------------------------------------------------------------------
+Oldpeak 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     410        0       29    0.789    0.408   0.6363      0.0      0.0 
+     .25      .50      .75      .90      .95 
+     0.0      0.0      0.6      1.5      2.0 
+
+lowest : -1.1 -0.5 -0.1 0    0.1 , highest: 2.4  2.6  3    3.5  4.2 
+--------------------------------------------------------------------------------
+ST_Slope 
+       n  missing distinct 
+     410        0        3 
+                            
+Value       Down  Flat    Up
+Frequency     14    79   317
+Proportion 0.034 0.193 0.773
+--------------------------------------------------------------------------------
+HeartDisease 
+       n  missing distinct     Info     Mean      Gmd 
+     410        0        1        0        0        0 
+              
+Value        0
+Frequency  410
+Proportion   1
+--------------------------------------------------------------------------------
+
+$`1`
+X[[i]] 
+
+ 12  Variables      508  Observations
+--------------------------------------------------------------------------------
+Age 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     508        0       47    0.999     55.9    9.784    39.35    43.00 
+     .25      .50      .75      .90      .95 
+   51.00    57.00    62.00    66.00    69.00 
+
+lowest : 31 32 33 34 35, highest: 73 74 75 76 77
+--------------------------------------------------------------------------------
+Sex 
+       n  missing distinct 
+     508        0        2 
+                      
+Value          F     M
+Frequency     50   458
+Proportion 0.098 0.902
+--------------------------------------------------------------------------------
+ChestPainType 
+       n  missing distinct 
+     508        0        4 
+                                  
+Value        ASY   ATA   NAP    TA
+Frequency    392    24    72    20
+Proportion 0.772 0.047 0.142 0.039
+--------------------------------------------------------------------------------
+RestingBP 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     508        0       61    0.995    134.2    21.45    108.7    110.0 
+     .25      .50      .75      .90      .95 
+   120.0    132.0    145.0    160.0    170.0 
+
+lowest :   0  92  95  96 100, highest: 180 185 190 192 200
+--------------------------------------------------------------------------------
+Cholesterol 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     508        0      175    0.973    175.9    137.8        0        0 
+     .25      .50      .75      .90      .95 
+       0      217      267      305      335 
+
+lowest :   0 100 110 113 117, highest: 466 491 518 529 603
+--------------------------------------------------------------------------------
+FastingBS 
+       n  missing distinct     Info      Sum     Mean      Gmd 
+     508        0        2    0.668      170   0.3346   0.4462 
+
+--------------------------------------------------------------------------------
+RestingECG 
+       n  missing distinct 
+     508        0        3 
+                               
+Value         LVH Normal     ST
+Frequency     106    285    117
+Proportion  0.209  0.561  0.230
+--------------------------------------------------------------------------------
+MaxHR 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     508        0      102    0.999    127.7    26.48    91.35    98.00 
+     .25      .50      .75      .90      .95 
+  112.00   126.00   144.25   158.30   167.30 
+
+lowest :  60  63  67  70  71, highest: 177 180 181 182 195
+--------------------------------------------------------------------------------
+ExerciseAngina 
+       n  missing distinct 
+     508        0        2 
+                      
+Value          N     Y
+Frequency    192   316
+Proportion 0.378 0.622
+--------------------------------------------------------------------------------
+Oldpeak 
+       n  missing distinct     Info     Mean      Gmd      .05      .10 
+     508        0       50    0.981    1.274    1.272    0.000    0.000 
+     .25      .50      .75      .90      .95 
+   0.000    1.200    2.000    2.930    3.065 
+
+lowest : -2.6 -2   -1.5 -1   -0.9, highest: 4.2  4.4  5    5.6  6.2 
+--------------------------------------------------------------------------------
+ST_Slope 
+       n  missing distinct 
+     508        0        3 
+                            
+Value       Down  Flat    Up
+Frequency     49   381    78
+Proportion 0.096 0.750 0.154
+--------------------------------------------------------------------------------
+HeartDisease 
+       n  missing distinct     Info     Mean      Gmd 
+     508        0        1        0        1        0 
+              
+Value        1
+Frequency  508
+Proportion   1
+--------------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cross tab - using lapply to create many different contingency tables</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(heart_data[, <span class="fu">c</span>(<span class="st">"Sex"</span>, <span class="st">"ChestPainType"</span>, <span class="st">"RestingECG"</span>, <span class="st">"ExerciseAngina"</span>)], <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">table</span>(heart_data<span class="sc">$</span>HeartDisease, x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Sex
+   x
+      F   M
+  0 143 267
+  1  50 458
+
+$ChestPainType
+   x
+    ASY ATA NAP  TA
+  0 104 149 131  26
+  1 392  24  72  20
+
+$RestingECG
+   x
+    LVH Normal  ST
+  0  82    267  61
+  1 106    285 117
+
+$ExerciseAngina
+   x
+      N   Y
+  0 355  55
+  1 192 316</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarizing the numerical variables. Now we can really see what predictors we might want to use in our models</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>heart_data <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(HeartDisease) <span class="sc">|&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">list</span>(<span class="st">"mean"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="st">"median"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">median</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.names =</span> <span class="st">"{.fn}_{.col}"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 13
+  HeartDisease mean_Age median_Age mean_RestingBP median_RestingBP
+         &lt;int&gt;    &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
+1            0     50.6         51           130.              130
+2            1     55.9         57           134.              132
+# ℹ 8 more variables: mean_Cholesterol &lt;dbl&gt;, median_Cholesterol &lt;dbl&gt;,
+#   mean_FastingBS &lt;dbl&gt;, median_FastingBS &lt;dbl&gt;, mean_MaxHR &lt;dbl&gt;,
+#   median_MaxHR &lt;dbl&gt;, mean_Oldpeak &lt;dbl&gt;, median_Oldpeak &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">### 2.) creating a new variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">### 3.) create dummy variables to prepare for kNN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">```{.r .cell-code} # Create dummy columns for the three categorical predictors using dummyVars() and predict().</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">help(dummyVars) ``` :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">```{.r .cell-code} # making our character variables factor variables, so we can make dummy columns</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">heart_data[,c(“Sex”, “ChestPainType”, “RestingECG”)] = lapply(heart_data[,c(“Sex”, “ChestPainType”, “RestingECG”)],factor) ``` :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">```{.r .cell-code} # create new variable with names of important factors in it</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">imp_factors = c(“Sex”, “ChestPainType”, “RestingECG”) ``` :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">```{.r .cell-code} # using these important factors to create the new columns</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">new_dummy_cols = dummyVars(~Sex + ChestPainType + RestingECG,heart_data,fullRank = T) heart_data=cbind(heart_data,predict(new_dummy_cols, heart_data[,imp_factors])) ``` :::</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="split-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="split-your-data">Split your Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed for reproducibility</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#indices to split on</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(heart_data), <span class="at">size =</span> <span class="fu">nrow</span>(heart_data)<span class="sc">*</span><span class="fl">0.8</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">setdiff</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(heart_data), train)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#subset</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>heartTrain <span class="ot">&lt;-</span> heart_data[train, ]</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>heartTest <span class="ot">&lt;-</span> heart_data[test, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">## kNN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} # lets learn how to use this training function so we can build our models help(trainControl)</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">```{.r .cell-code} # defining cv arguments that will be used as an argument inside each model function</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cv_settings &lt;- trainControl(method = “repeatedcv”, number = 10, repeats = 3) ``` :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} help(train)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">``` Help on topic ‘train’ was found in the following packages:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Package Library caret /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library generics /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Using the first match … ```</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} # lets set our tuning parameters so we can fit our knn tune_grid &lt;- expand.grid(k = 1:40)</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">```{.r .cell-code} # here is the function for our first model</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">my_knn &lt;- train(HeartDisease_factor ~., data = heartTrain, method = “knn”, trControl = cv_settings, preProcess = c(“center”, “scale”), tuneGrid = tune_grid) ``` :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} my_knn</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">``` k-Nearest Neighbors</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">734 samples 16 predictor 2 classes: ‘Normal’, ‘heart disease’</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pre-processing: centered (19), scaled (19) Resampling: Cross-Validated (10 fold, repeated 3 times) Summary of sample sizes: 660, 661, 661, 661, 661, 660, … Resampling results across tuning parameters:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">k Accuracy Kappa 1 0.7896992 0.5780330 2 0.7887740 0.5757591 3 0.8164801 0.6319130 4 0.8083164 0.6143359 5 0.8196454 0.6372625 6 0.8160046 0.6300577 7 0.8155727 0.6293050 8 0.8237363 0.6458230 9 0.8233105 0.6450844 10 0.8160598 0.6307206 11 0.8210089 0.6408270 12 0.8187011 0.6359217 13 0.8187255 0.6367136 14 0.8137333 0.6266887 15 0.8173863 0.6340240 16 0.8146713 0.6284240 17 0.8155969 0.6306779 18 0.8133321 0.6258051 19 0.8214837 0.6426151 20 0.8192130 0.6378915 21 0.8160230 0.6311379 22 0.8183304 0.6355509 23 0.8178491 0.6347123 24 0.8178616 0.6345326 25 0.8192130 0.6372134 26 0.8214655 0.6415961 27 0.8169297 0.6325122 28 0.8169359 0.6323382 29 0.8174110 0.6333392 30 0.8151461 0.6286248 31 0.8156090 0.6294429 32 0.8169976 0.6321408 33 0.8156154 0.6290970 34 0.8178433 0.6333493 35 0.8133386 0.6242798 36 0.8137582 0.6248029 37 0.8115059 0.6200536 38 0.8155910 0.6275819 39 0.8160478 0.6281456 40 0.8142517 0.6235405</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Accuracy was used to select the optimal model using the largest value. The final value used for the model was k = 8. ```</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} help(predict)</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} # time to use the predict function knn_predict &lt;- predict(my_knn, heartTest)</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} summary(knn_predict)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Normal heart disease 79           105</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">```{.r .cell-code} #Comments</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"># first want to set up a cross validation function - training set will also be split into its own little training/testing set (k fold and then averaging across all combinations). test set is reserved for after model is fit. should not be included in model fitting</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"># remember not to include both versions of variables # data2 = data[,c(“HeartDisease_factor”,“Sex.M”,“ChestPainType.ATA”,…)] # HeartDisease_factor ~ . , data ``` :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">```{.r .cell-code} # confusion matrix</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">confusionMatrix(knn_predict, heartTest$HeartDisease_factor) ```</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">``` Confusion Matrix and Statistics</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reference Prediction Normal heart disease Normal 59 20 heart disease 20 85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Accuracy : 0.7826 95% CI : (0.716, 0.8399) No Information Rate : 0.5707 P-Value [Acc &gt; NIR] : 1.306e-09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kappa : 0.5564</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mcnemar’s Test P-Value : 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sensitivity : 0.7468 Specificity : 0.8095 Pos Pred Value : 0.7468 Neg Pred Value : 0.8095 Prevalence : 0.4293 Detection Rate : 0.3207 Detection Prevalence : 0.4293 Balanced Accuracy : 0.7782</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">‘Positive’ Class : Normal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">```</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: :::</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R will do the dummy coding for you so you can use the regular categorical variables, not dummy. use factor variables</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#glmFit &lt;- glm(good ~ yards, </span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#             data = FGData, </span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#              family = "binomial")</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>my_logreg_1 <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> ChestPainType.ATA <span class="sc">+</span> RestingECG.ST, <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">family =</span> <span class="st">"binomial"</span>, <span class="at">trControl =</span> cv_settings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_logreg_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized Linear Model 
+
+734 samples
+  2 predictor
+  2 classes: 'Normal', 'heart disease' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+Summary of sample sizes: 661, 661, 659, 660, 660, 661, ... 
+Resampling results:
+
+  Accuracy  Kappa    
+  0.696208  0.3519376</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>log1_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_logreg_1, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>log1_predict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] Normal        heart disease heart disease Normal        Normal       
+  [6] heart disease Normal        heart disease heart disease heart disease
+ [11] Normal        Normal        Normal        Normal        heart disease
+ [16] heart disease heart disease Normal        heart disease heart disease
+ [21] heart disease Normal        heart disease Normal        heart disease
+ [26] heart disease heart disease Normal        heart disease heart disease
+ [31] Normal        heart disease Normal        heart disease Normal       
+ [36] heart disease heart disease heart disease heart disease heart disease
+ [41] heart disease Normal        heart disease heart disease heart disease
+ [46] heart disease heart disease heart disease heart disease Normal       
+ [51] heart disease heart disease Normal        heart disease Normal       
+ [56] heart disease heart disease heart disease heart disease heart disease
+ [61] heart disease heart disease heart disease heart disease heart disease
+ [66] heart disease heart disease heart disease heart disease heart disease
+ [71] heart disease heart disease Normal        heart disease heart disease
+ [76] heart disease heart disease heart disease heart disease heart disease
+ [81] heart disease heart disease heart disease heart disease heart disease
+ [86] heart disease Normal        heart disease heart disease heart disease
+ [91] heart disease heart disease heart disease heart disease heart disease
+ [96] heart disease Normal        heart disease heart disease heart disease
+[101] heart disease heart disease heart disease heart disease heart disease
+[106] heart disease Normal        heart disease heart disease heart disease
+[111] heart disease heart disease Normal        Normal        heart disease
+[116] heart disease heart disease heart disease heart disease heart disease
+[121] heart disease heart disease heart disease heart disease Normal       
+[126] heart disease heart disease heart disease heart disease Normal       
+[131] heart disease heart disease heart disease Normal        heart disease
+[136] heart disease heart disease Normal        heart disease heart disease
+[141] heart disease heart disease heart disease heart disease heart disease
+[146] heart disease heart disease heart disease heart disease heart disease
+[151] heart disease heart disease heart disease heart disease heart disease
+[156] heart disease heart disease heart disease Normal        heart disease
+[161] heart disease heart disease Normal        Normal        heart disease
+[166] heart disease heart disease heart disease heart disease Normal       
+[171] heart disease heart disease heart disease Normal        Normal       
+[176] Normal        heart disease Normal        heart disease heart disease
+[181] heart disease heart disease heart disease heart disease
+Levels: Normal heart disease</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log1_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Normal heart disease 
+           37           147 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_logreg_2 <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> Age <span class="sc">+</span> Cholesterol, <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">family =</span> <span class="st">"binomial"</span>, <span class="at">trControl =</span> cv_settings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_logreg_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized Linear Model 
+
+734 samples
+  2 predictor
+  2 classes: 'Normal', 'heart disease' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+Summary of sample sizes: 661, 661, 661, 661, 661, 660, ... 
+Resampling results:
+
+  Accuracy   Kappa    
+  0.6526928  0.2922258</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>log2_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_logreg_2, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log2_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Normal heart disease 
+           75           109 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_logreg_3 <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> MaxHR <span class="sc">+</span> RestingBP, <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">family =</span> <span class="st">"binomial"</span>, <span class="at">trControl =</span> cv_settings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>log3_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_logreg_3, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log3_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Normal heart disease 
+           75           109 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now let's look at the accuracy of all three</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(log1_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+               Reference
+Prediction      Normal heart disease
+  Normal            27            10
+  heart disease     52            95
+                                          
+               Accuracy : 0.663           
+                 95% CI : (0.5898, 0.7309)
+    No Information Rate : 0.5707          
+    P-Value [Acc &gt; NIR] : 0.00654         
+                                          
+                  Kappa : 0.2639          
+                                          
+ Mcnemar's Test P-Value : 1.919e-07       
+                                          
+            Sensitivity : 0.3418          
+            Specificity : 0.9048          
+         Pos Pred Value : 0.7297          
+         Neg Pred Value : 0.6463          
+             Prevalence : 0.4293          
+         Detection Rate : 0.1467          
+   Detection Prevalence : 0.2011          
+      Balanced Accuracy : 0.6233          
+                                          
+       'Positive' Class : Normal          
+                                          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(log2_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+               Reference
+Prediction      Normal heart disease
+  Normal            48            27
+  heart disease     31            78
+                                          
+               Accuracy : 0.6848          
+                 95% CI : (0.6123, 0.7512)
+    No Information Rate : 0.5707          
+    P-Value [Acc &gt; NIR] : 0.0009812       
+                                          
+                  Kappa : 0.3527          
+                                          
+ Mcnemar's Test P-Value : 0.6936406       
+                                          
+            Sensitivity : 0.6076          
+            Specificity : 0.7429          
+         Pos Pred Value : 0.6400          
+         Neg Pred Value : 0.7156          
+             Prevalence : 0.4293          
+         Detection Rate : 0.2609          
+   Detection Prevalence : 0.4076          
+      Balanced Accuracy : 0.6752          
+                                          
+       'Positive' Class : Normal          
+                                          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(log3_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+               Reference
+Prediction      Normal heart disease
+  Normal            50            25
+  heart disease     29            80
+                                         
+               Accuracy : 0.7065         
+                 95% CI : (0.635, 0.7712)
+    No Information Rate : 0.5707         
+    P-Value [Acc &gt; NIR] : 0.000101       
+                                         
+                  Kappa : 0.3973         
+                                         
+ Mcnemar's Test P-Value : 0.683091       
+                                         
+            Sensitivity : 0.6329         
+            Specificity : 0.7619         
+         Pos Pred Value : 0.6667         
+         Neg Pred Value : 0.7339         
+             Prevalence : 0.4293         
+         Detection Rate : 0.2717         
+   Detection Prevalence : 0.4076         
+      Balanced Accuracy : 0.6974         
+                                         
+       'Positive' Class : Normal         
+                                         </code></pre>
+</div>
+</div>
+</section>
+<section id="the-best-logistic-regression-model-was-the-one-with-maximum-heart-rate-and-resting-blood-pressure" class="level2">
+<h2 class="anchored" data-anchor-id="the-best-logistic-regression-model-was-the-one-with-maximum-heart-rate-and-resting-blood-pressure">the best logistic regression model was the one with Maximum Heart Rate and Resting Blood Pressure</h2>
+<hr>
+</section>
+<section id="tree-models" class="level1">
+<h1>Tree Models</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgl)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="classification-tree" class="level2">
+<h2 class="anchored" data-anchor-id="classification-tree">Classification Tree</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>my_tree <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> ChestPainType, </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"rpart"</span>, <span class="at">trControl =</span> cv_settings,  <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">cp =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.001</span>)))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>my_tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CART 
+
+734 samples
+  1 predictor
+  2 classes: 'Normal', 'heart disease' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+Summary of sample sizes: 660, 661, 661, 660, 660, 661, ... 
+Resampling results across tuning parameters:
+
+  cp     Accuracy   Kappa    
+  0.000  0.7614587  0.5196226
+  0.001  0.7614587  0.5196226
+  0.002  0.7614587  0.5196226
+  0.003  0.7614587  0.5196226
+  0.004  0.7614587  0.5196226
+  0.005  0.7614587  0.5196226
+  0.006  0.7614587  0.5196226
+  0.007  0.7614587  0.5196226
+  0.008  0.7614587  0.5196226
+  0.009  0.7614587  0.5196226
+  0.010  0.7614587  0.5196226
+  0.011  0.7560163  0.5074524
+  0.012  0.7560163  0.5074524
+  0.013  0.7560163  0.5074524
+  0.014  0.7523633  0.4991209
+  0.015  0.7523633  0.4991209
+  0.016  0.7523633  0.4991209
+  0.017  0.7491917  0.4920402
+  0.018  0.7491917  0.4920402
+  0.019  0.7491917  0.4920402
+  0.020  0.7491917  0.4920402
+  0.021  0.7491917  0.4910192
+  0.022  0.7491917  0.4910192
+  0.023  0.7491917  0.4910192
+  0.024  0.7514686  0.4946108
+  0.025  0.7514686  0.4946108
+  0.026  0.7514686  0.4946108
+  0.027  0.7532827  0.4979961
+  0.028  0.7532827  0.4979961
+  0.029  0.7532827  0.4979961
+  0.030  0.7532827  0.4979961
+  0.031  0.7532827  0.4979961
+  0.032  0.7532827  0.4979961
+  0.033  0.7532827  0.4979961
+  0.034  0.7532827  0.4979961
+  0.035  0.7532827  0.4979961
+  0.036  0.7532827  0.4979961
+  0.037  0.7532827  0.4979961
+  0.038  0.7532827  0.4979961
+  0.039  0.7532827  0.4979961
+  0.040  0.7532827  0.4979961
+  0.041  0.7532827  0.4979961
+  0.042  0.7532827  0.4979961
+  0.043  0.7532827  0.4979961
+  0.044  0.7532827  0.4979961
+  0.045  0.7532827  0.4979961
+  0.046  0.7532827  0.4979961
+  0.047  0.7532827  0.4979961
+  0.048  0.7532827  0.4979961
+  0.049  0.7532827  0.4979961
+  0.050  0.7532827  0.4979961
+  0.051  0.7532827  0.4979961
+  0.052  0.7532827  0.4979961
+  0.053  0.7532827  0.4979961
+  0.054  0.7532827  0.4979961
+  0.055  0.7532827  0.4979961
+  0.056  0.7532827  0.4979961
+  0.057  0.7532827  0.4979961
+  0.058  0.7532827  0.4979961
+  0.059  0.7532827  0.4979961
+  0.060  0.7532827  0.4979961
+  0.061  0.7532827  0.4979961
+  0.062  0.7532827  0.4979961
+  0.063  0.7532827  0.4979961
+  0.064  0.7532827  0.4979961
+  0.065  0.7532827  0.4979961
+  0.066  0.7532827  0.4979961
+  0.067  0.7532827  0.4979961
+  0.068  0.7532827  0.4979961
+  0.069  0.7532827  0.4979961
+  0.070  0.7532827  0.4979961
+  0.071  0.7532827  0.4979961
+  0.072  0.7532827  0.4979961
+  0.073  0.7532827  0.4979961
+  0.074  0.7532827  0.4979961
+  0.075  0.7532827  0.4979961
+  0.076  0.7532827  0.4979961
+  0.077  0.7532827  0.4979961
+  0.078  0.7532827  0.4979961
+  0.079  0.7532827  0.4979961
+  0.080  0.7532827  0.4979961
+  0.081  0.7532827  0.4979961
+  0.082  0.7532827  0.4979961
+  0.083  0.7532827  0.4979961
+  0.084  0.7532827  0.4979961
+  0.085  0.7532827  0.4979961
+  0.086  0.7532827  0.4979961
+  0.087  0.7532827  0.4979961
+  0.088  0.7532827  0.4979961
+  0.089  0.7532827  0.4979961
+  0.090  0.7532827  0.4979961
+  0.091  0.7532827  0.4979961
+  0.092  0.7532827  0.4979961
+  0.093  0.7532827  0.4979961
+  0.094  0.7532827  0.4979961
+  0.095  0.7532827  0.4979961
+  0.096  0.7532827  0.4979961
+  0.097  0.7532827  0.4979961
+  0.098  0.7532827  0.4979961
+  0.099  0.7532827  0.4979961
+  0.100  0.7532827  0.4979961
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was cp = 0.01.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW5_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>tree_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_tree, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tree_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Normal heart disease 
+           80           104 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(tree_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+               Reference
+Prediction      Normal heart disease
+  Normal            57            23
+  heart disease     22            82
+                                          
+               Accuracy : 0.7554          
+                 95% CI : (0.6868, 0.8157)
+    No Information Rate : 0.5707          
+    P-Value [Acc &gt; NIR] : 1.364e-07       
+                                          
+                  Kappa : 0.5017          
+                                          
+ Mcnemar's Test P-Value : 1               
+                                          
+            Sensitivity : 0.7215          
+            Specificity : 0.7810          
+         Pos Pred Value : 0.7125          
+         Neg Pred Value : 0.7885          
+             Prevalence : 0.4293          
+         Detection Rate : 0.3098          
+   Detection Prevalence : 0.4348          
+      Balanced Accuracy : 0.7512          
+                                          
+       'Positive' Class : Normal          
+                                          </code></pre>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">## Random Forest Model</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} my_rf &lt;- train(HeartDisease_factor ~ ChestPainType, data = heartTrain, method = "rf", trControl = cv_settings,  tuneGrid = expand.grid(mtry = seq(1, 4, 1)))</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stderr}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range Warning in randomForest.default(x, y, mtry = param$mtry, ...): invalid mtry: reset to within valid range</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">:::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} my_rf</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">``` Random Forest</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">734 samples 1 predictor 2 classes: ‘Normal’, ‘heart disease’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">No pre-processing Resampling: Cross-Validated (10 fold, repeated 3 times) Summary of sample sizes: 660, 660, 661, 661, 661, 661, … Resampling results across tuning parameters:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mtry Accuracy Kappa 1 0.7505615 0.4957108 2 0.7614711 0.5198206 3 0.7614711 0.5198206 4 0.7614711 0.5198206</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Accuracy was used to select the optimal model using the largest value. The final value used for the model was mtry = 2. ```</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} rf_predict &lt;- predict(my_rf, heartTest)</code> :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} summary(rf_predict)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Normal heart disease 80           104</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} confusionMatrix(rf_predict, heartTest$HeartDisease_factor)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">``` Confusion Matrix and Statistics</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reference Prediction Normal heart disease Normal 57 23 heart disease 22 82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Accuracy : 0.7554 95% CI : (0.6868, 0.8157) No Information Rate : 0.5707 P-Value [Acc &gt; NIR] : 1.364e-07</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kappa : 0.5017</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mcnemar’s Test P-Value : 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sensitivity : 0.7215 Specificity : 0.7810 Pos Pred Value : 0.7125 Neg Pred Value : 0.7885 Prevalence : 0.4293 Detection Rate : 0.3098 Detection Prevalence : 0.4348 Balanced Accuracy : 0.7512</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">‘Positive’ Class : Normal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">```</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: :::</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="boosted-tree-model" class="level1">
+<h1>Boosted Tree Model</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gbm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loaded gbm 2.2.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>This version of gbm is no longer under development. Consider transitioning to gbm3, https://github.com/gbm-developers/gbm3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We have new parameters that we need to pay attention to and set here</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>tuning_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">n.trees =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>), <span class="at">interaction.depth =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">shrinkage =</span> <span class="fl">0.1</span>, <span class="at">n.minobsinnode =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>my_boost <span class="ot">&lt;-</span> <span class="fu">train</span>(HeartDisease_factor <span class="sc">~</span> Cholesterol <span class="sc">+</span> RestingBP <span class="sc">+</span> ChestPainType, <span class="at">data =</span> heartTrain, <span class="at">method =</span> <span class="st">"gbm"</span>, <span class="at">trControl =</span> cv_settings, <span class="at">tuneGrid =</span> tuning_params, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>my_boost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Stochastic Gradient Boosting 
+
+734 samples
+  3 predictor
+  2 classes: 'Normal', 'heart disease' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+Summary of sample sizes: 661, 661, 660, 660, 661, 660, ... 
+Resampling results across tuning parameters:
+
+  interaction.depth  n.trees  Accuracy   Kappa    
+  1                   25      0.7684561  0.5232454
+  1                   50      0.7747933  0.5386068
+  1                  100      0.7807108  0.5524811
+  1                  200      0.7843268  0.5602507
+  2                   25      0.7747995  0.5384367
+  2                   50      0.7802604  0.5514641
+  2                  100      0.7761508  0.5439960
+  2                  200      0.7720844  0.5362077
+  3                   25      0.7775145  0.5456405
+  3                   50      0.7784586  0.5477952
+  3                  100      0.7739171  0.5393400
+  3                  200      0.7639331  0.5189418
+
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 10
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were n.trees = 200, interaction.depth =
+ 1, shrinkage = 0.1 and n.minobsinnode = 10.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the predict function on our boosted tree</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>boost_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_boost, heartTest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boost_predict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Normal heart disease 
+           71           113 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>boost_predict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] Normal        Normal        Normal        Normal        Normal       
+  [6] heart disease Normal        heart disease Normal        heart disease
+ [11] Normal        Normal        Normal        Normal        heart disease
+ [16] heart disease heart disease Normal        heart disease heart disease
+ [21] heart disease Normal        heart disease Normal        heart disease
+ [26] heart disease Normal        Normal        Normal        Normal       
+ [31] Normal        heart disease Normal        Normal        Normal       
+ [36] heart disease heart disease heart disease heart disease Normal       
+ [41] heart disease Normal        Normal        Normal        heart disease
+ [46] heart disease heart disease heart disease heart disease Normal       
+ [51] Normal        Normal        Normal        Normal        Normal       
+ [56] heart disease heart disease Normal        heart disease heart disease
+ [61] heart disease heart disease heart disease heart disease heart disease
+ [66] heart disease heart disease heart disease heart disease heart disease
+ [71] heart disease heart disease Normal        heart disease heart disease
+ [76] heart disease heart disease heart disease heart disease heart disease
+ [81] heart disease heart disease heart disease heart disease heart disease
+ [86] Normal        Normal        heart disease heart disease heart disease
+ [91] heart disease heart disease heart disease heart disease heart disease
+ [96] Normal        Normal        heart disease heart disease heart disease
+[101] heart disease heart disease Normal        heart disease heart disease
+[106] heart disease Normal        Normal        heart disease heart disease
+[111] heart disease heart disease Normal        Normal        heart disease
+[116] heart disease heart disease Normal        heart disease Normal       
+[121] heart disease Normal        heart disease heart disease Normal       
+[126] Normal        heart disease heart disease heart disease Normal       
+[131] Normal        heart disease heart disease Normal        heart disease
+[136] heart disease heart disease Normal        Normal        heart disease
+[141] heart disease Normal        heart disease heart disease Normal       
+[146] heart disease heart disease heart disease heart disease Normal       
+[151] heart disease heart disease heart disease Normal        heart disease
+[156] Normal        Normal        heart disease Normal        heart disease
+[161] Normal        Normal        Normal        Normal        heart disease
+[166] heart disease heart disease heart disease heart disease Normal       
+[171] heart disease heart disease heart disease Normal        Normal       
+[176] Normal        Normal        Normal        heart disease heart disease
+[181] heart disease heart disease heart disease Normal       
+Levels: Normal heart disease</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How well did it do? </span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(boost_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+               Reference
+Prediction      Normal heart disease
+  Normal            53            18
+  heart disease     26            87
+                                          
+               Accuracy : 0.7609          
+                 95% CI : (0.6926, 0.8206)
+    No Information Rate : 0.5707          
+    P-Value [Acc &gt; NIR] : 5.71e-08        
+                                          
+                  Kappa : 0.5058          
+                                          
+ Mcnemar's Test P-Value : 0.2913          
+                                          
+            Sensitivity : 0.6709          
+            Specificity : 0.8286          
+         Pos Pred Value : 0.7465          
+         Neg Pred Value : 0.7699          
+             Prevalence : 0.4293          
+         Detection Rate : 0.2880          
+   Detection Prevalence : 0.3859          
+      Balanced Accuracy : 0.7497          
+                                          
+       'Positive' Class : Normal          
+                                          </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>knn_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(knn_predict, heartTest<span class="sc">$</span>HeartDisease_factor) </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>log1_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log1_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>log2_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log2_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>log3_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(log3_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>tree_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(tree_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>rf_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(rf_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>boost_accuracy <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(boost_predict, heartTest<span class="sc">$</span>HeartDisease_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="which-model-is-best" class="level1">
+<h1>Which model is best??</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>confusion_final <span class="ot">&lt;-</span> <span class="fu">c</span>(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, tree_accuracy, rf_accuracy, boost_accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>confusion_final</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            59            20
+  heart disease     20            85
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  7.826087e-01   5.563593e-01   7.159592e-01   8.399194e-01   5.706522e-01 
+AccuracyPValue  McnemarPValue 
+  1.305963e-09   1.000000e+00 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.7468354            0.8095238            0.7468354 
+      Neg Pred Value            Precision               Recall 
+           0.8095238            0.7468354            0.7468354 
+                  F1           Prevalence       Detection Rate 
+           0.7468354            0.4293478            0.3206522 
+Detection Prevalence    Balanced Accuracy 
+           0.4293478            0.7781796 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()
+
+$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            27            10
+  heart disease     52            95
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  6.630435e-01   2.639050e-01   5.898157e-01   7.309202e-01   5.706522e-01 
+AccuracyPValue  McnemarPValue 
+  6.540106e-03   1.919127e-07 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.3417722            0.9047619            0.7297297 
+      Neg Pred Value            Precision               Recall 
+           0.6462585            0.7297297            0.3417722 
+                  F1           Prevalence       Detection Rate 
+           0.4655172            0.4293478            0.1467391 
+Detection Prevalence    Balanced Accuracy 
+           0.2010870            0.6232670 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()
+
+$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            48            27
+  heart disease     31            78
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  0.6847826087   0.3526628655   0.6123450214   0.7511507534   0.5706521739 
+AccuracyPValue  McnemarPValue 
+  0.0009812299   0.6936406218 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.6075949            0.7428571            0.6400000 
+      Neg Pred Value            Precision               Recall 
+           0.7155963            0.6400000            0.6075949 
+                  F1           Prevalence       Detection Rate 
+           0.6233766            0.4293478            0.2608696 
+Detection Prevalence    Balanced Accuracy 
+           0.4076087            0.6752260 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()
+
+$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            50            25
+  heart disease     29            80
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  0.7065217391   0.3973068058   0.6350409928   0.7712123744   0.5706521739 
+AccuracyPValue  McnemarPValue 
+  0.0001010221   0.6830913983 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.6329114            0.7619048            0.6666667 
+      Neg Pred Value            Precision               Recall 
+           0.7339450            0.6666667            0.6329114 
+                  F1           Prevalence       Detection Rate 
+           0.6493506            0.4293478            0.2717391 
+Detection Prevalence    Balanced Accuracy 
+           0.4076087            0.6974081 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()
+
+$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            57            23
+  heart disease     22            82
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  7.554348e-01   5.016851e-01   6.867727e-01   8.156742e-01   5.706522e-01 
+AccuracyPValue  McnemarPValue 
+  1.363908e-07   1.000000e+00 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.7215190            0.7809524            0.7125000 
+      Neg Pred Value            Precision               Recall 
+           0.7884615            0.7125000            0.7215190 
+                  F1           Prevalence       Detection Rate 
+           0.7169811            0.4293478            0.3097826 
+Detection Prevalence    Balanced Accuracy 
+           0.4347826            0.7512357 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()
+
+$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            57            23
+  heart disease     22            82
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  7.554348e-01   5.016851e-01   6.867727e-01   8.156742e-01   5.706522e-01 
+AccuracyPValue  McnemarPValue 
+  1.363908e-07   1.000000e+00 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.7215190            0.7809524            0.7125000 
+      Neg Pred Value            Precision               Recall 
+           0.7884615            0.7125000            0.7215190 
+                  F1           Prevalence       Detection Rate 
+           0.7169811            0.4293478            0.3097826 
+Detection Prevalence    Balanced Accuracy 
+           0.4347826            0.7512357 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()
+
+$positive
+[1] "Normal"
+
+$table
+               Reference
+Prediction      Normal heart disease
+  Normal            53            18
+  heart disease     26            87
+
+$overall
+      Accuracy          Kappa  AccuracyLower  AccuracyUpper   AccuracyNull 
+  7.608696e-01   5.057990e-01   6.925827e-01   8.205512e-01   5.706522e-01 
+AccuracyPValue  McnemarPValue 
+  5.709525e-08   2.912928e-01 
+
+$byClass
+         Sensitivity          Specificity       Pos Pred Value 
+           0.6708861            0.8285714            0.7464789 
+      Neg Pred Value            Precision               Recall 
+           0.7699115            0.7464789            0.6708861 
+                  F1           Prevalence       Detection Rate 
+           0.7066667            0.4293478            0.2880435 
+Detection Prevalence    Balanced Accuracy 
+           0.3858696            0.7497288 
+
+$mode
+[1] "sens_spec"
+
+$dots
+list()</code></pre>
+</div>
+</div>
+</section>
+<section id="chestpaintype-was-the-best-predictor-and-in-the-tree-model-and-rf-model" class="level1">
+<h1>ChestPainType was the best predictor and in the Tree Model and RF Model!</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random notes</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># also create a new dataset with cbind of a version of the predictors that only use the dummy columns</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># doesn't handle categorical variables well</span></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="co"># could PROBABLY use same dataset EXCEPT it's possible it will want heart disease as a nonfactor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
