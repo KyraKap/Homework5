@@ -10,6 +10,9 @@ editor: visual
 Open-ended questions
 
 ## Task 2: Fitting Models
+```{r}
+install.packages("randomForest")
+```
 
 ```{r}
 # libraries
@@ -20,7 +23,7 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(Hmisc)
-
+library(randomForest)
 ```
 
 ### Quick EDA/Data Preparation
@@ -272,21 +275,149 @@ summary(log3_predict)
 ```
 
 ```{r}
-log_predictions <- c(log1_predict, log2_predict, log3_predict)
+
+confusionMatrix(log1_predict, heartTest$HeartDisease_factor)
+confusionMatrix(log2_predict, heartTest$HeartDisease_factor)
+confusionMatrix(log3_predict, heartTest$HeartDisease_factor)
+
+```
+
+
+## the best logistic regression model was the one with Maximum Heart Rate and Resting Blood Pressure
+
+
+
+# Tree Models
+
+```{r}
+library(tidyverse)
+library(haven)
+library(knitr)
+library(rgl)
+library(tree)
+```
+
+## Classification Tree
+```{r}
+my_tree <- train(HeartDisease_factor ~ ChestPainType, 
+                data = heartTrain, method = "rpart", trControl = cv_settings,  tuneGrid = expand.grid(cp = seq(0, 0.1, 0.001)))
+my_tree
+```
+```{r}
+plot(my_tree)
+```
+```{r}
+tree_predict <- predict(my_tree, heartTest)
 ```
 
 ```{r}
-confusionMatrix(log_predictions, heartTest$HeartDisease_factor)
+summary(tree_predict)
+```
+
+
+```{r}
+confusionMatrix(tree_predict, heartTest$HeartDisease_factor)
+```
+
+## Random Forest Model
+
+```{r}
+install.packages("randomForest")
+```
+
+
+```{r}
+my_rf <- train(HeartDisease_factor ~ ChestPainType, 
+                data = heartTrain, method = "rf", trControl = cv_settings,  tuneGrid = expand.grid(mtry = seq(1, 4, 1)))
+my_rf
+```
+
+```{r}
+rf_predict <- predict(my_rf, heartTest)
+```
+
+```{r}
+summary(rf_predict)
+```
+
+```{r}
+confusionMatrix(rf_predict, heartTest$HeartDisease_factor)
 ```
 
 
 
-Tree Models
+```{r}
+# Boosted Tree Model
+
+library(gbm)
+```
+
 
 ```{r}
+tuning_params <- expand.grid(n.trees = c(25, 50, 100, 200), interaction.depth = c(1, 2, 3), shrinkage = 0.1, n.minobsinnode = 10)
+
+```
+
+
+```{r}
+my_boost <- train(HeartDisease_factor ~ Cholesterol + RestingBP + ChestPainType, data = heartTrain, method = "gbm", trControl = cv_settings, tuneGrid = tuning_params, verbose = FALSE)
+
+```
+
+```{r}
+my_boost
+```
+
+```{r}
+boost_predict <- predict(my_boost, heartTest)
+```
+
+```{r}
+summary(boost_predict)
+```
+
+```{r}
+boost_predict
+```
+
+
+```{r}
+confusionMatrix(boost_predict, heartTest$HeartDisease_factor)
+```
+
+
+```{r}
+knn_accuracy <- confusionMatrix(knn_predict, heartTest$HeartDisease_factor) 
+log1_accuracy <- confusionMatrix(log1_predict, heartTest$HeartDisease_factor)
+log2_accuracy <- confusionMatrix(log2_predict, heartTest$HeartDisease_factor)
+log3_accuracy <- confusionMatrix(log3_predict, heartTest$HeartDisease_factor)
+tree_accuracy <- confusionMatrix(tree_predict, heartTest$HeartDisease_factor)
+rf_accuracy <- confusionMatrix(rf_predict, heartTest$HeartDisease_factor)
+boost_accuracy <- confusionMatrix(boost_predict, heartTest$HeartDisease_factor)
+```
+
+
+```{r}
+
+# Which model is the best
+
+confusion_final <- c(knn_accuracy, log1_accuracy, log2_accuracy, log3_accuracy, tree_accuracy, rf_accuracy, boost_accuracy)
+```
+
+```{r}
+confusion_final
+```
+
+# ChestPainType was the best predictor and in the Tree Model and RF Model
+
+```{r}
+
+# random notes
+
 # also create a new dataset with cbind of a version of the predictors that only use the dummy columns
 # doesn't handle categorical variables well
 # could PROBABLY use same dataset EXCEPT it's possible it will want heart disease as a nonfactor
 
 
 ```
+
